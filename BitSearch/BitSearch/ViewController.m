@@ -85,6 +85,10 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
     [self presentViewController:reader animated:YES completion:nil];
 }
 
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
+    CGRect f = CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height);
+    self.webView.frame = f;
+}
 
 #pragma mark - UIWebView Delegate
 
