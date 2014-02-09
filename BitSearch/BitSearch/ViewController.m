@@ -11,6 +11,7 @@
 
 @interface ViewController () {
     NSInteger _previousScrollViewYOffset;
+    UIImage* _QRCodeImage;
 }
 
 @end
@@ -26,9 +27,9 @@
     _previousScrollViewYOffset = self.webView.scrollView.contentOffset.y;
     [self launchWeb:[self searchRequest:@"1"]];
     
-    UIImage *image = [[UIImage imageNamed:@"qrcode20x20.png"]
+    _QRCodeImage = [[UIImage imageNamed:@"qrcode20x20.png"]
                       imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-    [self.QRCodeBarButtonItem setImage:image];
+    [self.QRCodeBarButtonItem setImage:_QRCodeImage];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -108,7 +109,6 @@
         return NO;
     }
     return YES;
-    
 }
 
 
@@ -168,6 +168,11 @@
     }];
     self.navigationItem.titleView.alpha = alpha;
     self.navigationController.navigationBar.tintColor = [self.navigationController.navigationBar.tintColor colorWithAlphaComponent:alpha];
+    
+    if (alpha)
+        [self.QRCodeBarButtonItem setImage:_QRCodeImage];
+    else
+        self.QRCodeBarButtonItem.image = nil;
 }
 
 - (void)animateNavBarTo:(CGFloat)y
