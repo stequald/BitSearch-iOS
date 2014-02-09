@@ -495,10 +495,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitSearch/BitSearch-Prefix.pch";
 				INFOPLIST_FILE = "BitSearch/BitSearch-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/timothylee/git/bitSearch/BitSearch/External/ZBarSDK,
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/External/ZBarSDK";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
@@ -518,10 +515,7 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BitSearch/BitSearch-Prefix.pch";
 				INFOPLIST_FILE = "BitSearch/BitSearch-Info.plist";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/Users/timothylee/git/bitSearch/BitSearch/External/ZBarSDK,
-				);
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/External/ZBarSDK";
 				ONLY_ACTIVE_ARCH = NO;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
