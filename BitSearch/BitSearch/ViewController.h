@@ -13,5 +13,6 @@
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *QRCodeBarButtonItem;
 
 @end

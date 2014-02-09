@@ -25,6 +25,10 @@
     self.webView.scrollView.delegate = self;
     _previousScrollViewYOffset = self.webView.scrollView.contentOffset.y;
     [self launchWeb:[self searchRequest:@"1"]];
+    
+    UIImage *image = [[UIImage imageNamed:@"qrcode20x20.png"]
+                      imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    [self.QRCodeBarButtonItem setImage:image];
 }
 
 - (void)didReceiveMemoryWarning {

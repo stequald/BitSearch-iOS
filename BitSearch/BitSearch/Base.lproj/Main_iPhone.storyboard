@@ -54,6 +54,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="QRCodeBarButtonItem" destination="aCq-kc-y3O" id="M0N-6r-iv4"/>
                         <outlet property="searchTextField" destination="8wF-Js-BUi" id="rRu-k1-XDh"/>
                         <outlet property="webView" destination="iY7-gv-yw0" id="2ZG-4M-aFR"/>
                     </connections>

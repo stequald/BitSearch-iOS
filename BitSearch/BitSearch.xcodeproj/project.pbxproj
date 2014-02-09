@@ -21,6 +21,8 @@
 		C03959D218A7503000AABC4C /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C03959B118A7503000AABC4C /* UIKit.framework */; };
 		C03959DA18A7503100AABC4C /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = C03959D818A7503100AABC4C /* InfoPlist.strings */; };
 		C03959DC18A7503100AABC4C /* BitSearchTests.m in Sources */ = {isa = PBXBuildFile; fileRef = C03959DB18A7503100AABC4C /* BitSearchTests.m */; };
+		C062FEA418A7658900A405E4 /* qrcode.png in Resources */ = {isa = PBXBuildFile; fileRef = C062FEA318A7658900A405E4 /* qrcode.png */; };
+		C062FEA818A7670400A405E4 /* qrcode20x20.png in Resources */ = {isa = PBXBuildFile; fileRef = C062FEA718A7670400A405E4 /* qrcode20x20.png */; };
 		C070C32F18A7555500AEBE59 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C32E18A7555500AEBE59 /* AVFoundation.framework */; };
 		C070C33118A7556200AEBE59 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C33018A7556200AEBE59 /* libiconv.dylib */; };
 		C070C33318A7557900AEBE59 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C33218A7557900AEBE59 /* CoreMedia.framework */; };
@@ -58,6 +60,8 @@
 		C03959D718A7503100AABC4C /* BitSearchTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BitSearchTests-Info.plist"; sourceTree = "<group>"; };
 		C03959D918A7503100AABC4C /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		C03959DB18A7503100AABC4C /* BitSearchTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BitSearchTests.m; sourceTree = "<group>"; };
+		C062FEA318A7658900A405E4 /* qrcode.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode.png; sourceTree = "<group>"; };
+		C062FEA718A7670400A405E4 /* qrcode20x20.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = qrcode20x20.png; sourceTree = "<group>"; };
 		C070C32E18A7555500AEBE59 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		C070C33018A7556200AEBE59 /* libiconv.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libiconv.dylib; path = usr/lib/libiconv.dylib; sourceTree = SDKROOT; };
 		C070C33218A7557900AEBE59 /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -155,6 +159,7 @@
 				C03959C518A7503000AABC4C /* ViewController.h */,
 				C03959C618A7503000AABC4C /* ViewController.m */,
 				C03959C818A7503000AABC4C /* Images.xcassets */,
+				C062FEA118A7658900A405E4 /* Assets */,
 				C03959B418A7503000AABC4C /* Supporting Files */,
 			);
 			path = BitSearch;
@@ -187,6 +192,23 @@
 				C03959D818A7503100AABC4C /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		C062FEA118A7658900A405E4 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				C062FEA218A7658900A405E4 /* images */,
+			);
+			path = Assets;
+			sourceTree = "<group>";
+		};
+		C062FEA218A7658900A405E4 /* images */ = {
+			isa = PBXGroup;
+			children = (
+				C062FEA718A7670400A405E4 /* qrcode20x20.png */,
+				C062FEA318A7658900A405E4 /* qrcode.png */,
+			);
+			path = images;
 			sourceTree = "<group>";
 		};
 		C070C33418A757C200AEBE59 /* External */ = {
@@ -330,6 +352,8 @@
 			files = (
 				C03959C418A7503000AABC4C /* Main_iPad.storyboard in Resources */,
 				C03959C918A7503000AABC4C /* Images.xcassets in Resources */,
+				C062FEA818A7670400A405E4 /* qrcode20x20.png in Resources */,
+				C062FEA418A7658900A405E4 /* qrcode.png in Resources */,
 				C03959C118A7503000AABC4C /* Main_iPhone.storyboard in Resources */,
 				C03959B818A7503000AABC4C /* InfoPlist.strings in Resources */,
 			);
