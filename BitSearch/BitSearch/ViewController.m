@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 
+static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
 
 @interface ViewController () {
     NSInteger _previousScrollViewYOffset;
@@ -117,19 +118,19 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView
 {
     CGRect frame = self.navigationController.navigationBar.frame;
-    CGFloat size = frame.size.height - 21;
-    CGFloat framePercentageHidden = ((20 - frame.origin.y) / (frame.size.height - 1));
+    CGFloat size = frame.size.height - (SEARCH_NAVBAR_HEIGHT+1);
+    CGFloat framePercentageHidden = ((SEARCH_NAVBAR_HEIGHT - frame.origin.y) / (frame.size.height - 1));
     CGFloat scrollOffset = scrollView.contentOffset.y;
     CGFloat scrollDiff = scrollOffset - _previousScrollViewYOffset;
     CGFloat scrollHeight = scrollView.frame.size.height;
     CGFloat scrollContentSizeHeight = scrollView.contentSize.height + scrollView.contentInset.bottom;
     
     if (scrollOffset <= -scrollView.contentInset.top) {
-        frame.origin.y = 20;
+        frame.origin.y = SEARCH_NAVBAR_HEIGHT;
     } else if ((scrollOffset + scrollHeight) >= scrollContentSizeHeight) {
         frame.origin.y = -size;
     } else {
-        frame.origin.y = MIN(20, MAX(-size, frame.origin.y - scrollDiff));
+        frame.origin.y = MIN(SEARCH_NAVBAR_HEIGHT, MAX(-size, frame.origin.y - scrollDiff));
     }
     
     [self.navigationController.navigationBar setFrame:frame];
@@ -153,8 +154,8 @@
 - (void)stoppedScrolling
 {
     CGRect frame = self.navigationController.navigationBar.frame;
-    if (frame.origin.y < 20) {
-        [self animateNavBarTo:-(frame.size.height - 21)];
+    if (frame.origin.y < SEARCH_NAVBAR_HEIGHT) {
+        [self animateNavBarTo:-(frame.size.height - (SEARCH_NAVBAR_HEIGHT+1))];
     }
 }
 
