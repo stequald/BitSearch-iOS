@@ -7,7 +7,9 @@
 //
 
 #import "ViewController.h"
+#import "AppDelegate.h"
 
+static NSString *const FRONT_PAGE_SEARCH_TERM = @"1";
 static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
 
 @interface ViewController () {
@@ -26,30 +28,19 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
     self.webView.delegate = self;
     self.webView.scrollView.delegate = self;
     _previousScrollViewYOffset = self.webView.scrollView.contentOffset.y;
-    [self launchWeb:[self searchRequest:@"1"]];
+    self.searchTextField.text = FRONT_PAGE_SEARCH_TERM;
+    [self launchWeb:[self searchRequest:FRONT_PAGE_SEARCH_TERM]];
     
     _QRCodeImage = [[UIImage imageNamed:@"qrcode20x20.png"]
                       imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
     [self.QRCodeBarButtonItem setImage:_QRCodeImage];
+
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(zbarReadSymbolNotification:) name:ZBAR_READ_SYMBOL_NOTIFICATION object:nil];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-}
-
-- (void) imagePickerController: (UIImagePickerController*) reader
- didFinishPickingMediaWithInfo: (NSDictionary*) info
-{
-    // get the decode results
-    id<NSFastEnumeration> results = [info objectForKey: ZBarReaderControllerResults];
-    ZBarSymbol *symbol = nil;
-    
-    // just grab the first barcode
-    for(symbol in results) break;
-    self.searchTextField.text = symbol.data;
-    
-    // dismiss the controller (NB dismiss from the *reader*!)
-    [reader dismissViewControllerAnimated:YES completion:nil];
+- (void)zbarReadSymbolNotification:(NSNotification*)note {
+    NSString* data = [note object];
+    self.searchTextField.text = data;
     [self launchWeb: [self searchRequest:self.searchTextField.text]];
 }
 
@@ -58,31 +49,15 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
     return [NSString stringWithFormat:@"%@%@",blockchainSearchRequest, searchTerm];
 }
 
-- (void) launchWeb: (NSString*)urlAddress
-{
+- (void) launchWeb: (NSString*)urlAddress {
     NSLog(@"urlAddress: %@", urlAddress);
     NSURL *url = [NSURL URLWithString:urlAddress];
     NSURLRequest *requestObj = [NSURLRequest requestWithURL:url];
     [self.webView loadRequest:requestObj];
 }
 
-- (IBAction) scanButtonTapped
-{
-    // ADD: present a barcode reader that scans from the camera feed
-    ZBarReaderViewController *reader = [ZBarReaderViewController new];
-    reader.readerDelegate = self;
-    reader.supportedOrientationsMask = ZBarOrientationMaskAll;
-    
-    ZBarImageScanner *scanner = reader.scanner;
-    // TODO: (optional) additional reader configuration here
-    
-    // EXAMPLE: disable rarely used I2/5 to improve performance
-    [scanner setSymbology: ZBAR_I25
-                   config: ZBAR_CFG_ENABLE
-                       to: 0];
-    
-    // present and release the controller
-    [self presentViewController:reader animated:YES completion:nil];
+- (IBAction) scanButtonTapped {
+    [[AppDelegate instance] scanAccountQRCode];
 }
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)orientation duration:(NSTimeInterval)duration {
@@ -94,14 +69,17 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self.QRCodeBarButtonItem setEnabled:YES];
 }
 
 - (void)webViewDidStartLoad:(UIWebView *)webView {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:YES];
+    [self.QRCodeBarButtonItem setEnabled:NO];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error {
     [[UIApplication sharedApplication] setNetworkActivityIndicatorVisible:NO];
+    [self.QRCodeBarButtonItem setEnabled:YES];
 }
 
 
@@ -119,8 +97,7 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
 
 #pragma mark - UIScrollView Delegate
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     CGRect frame = self.navigationController.navigationBar.frame;
     CGFloat size = frame.size.height - (SEARCH_NAVBAR_HEIGHT+1);
     CGFloat framePercentageHidden = ((SEARCH_NAVBAR_HEIGHT - frame.origin.y) / (frame.size.height - 1));
@@ -142,21 +119,17 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
     _previousScrollViewYOffset = scrollOffset;
 }
 
-- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
-{
+- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
     [self stoppedScrolling];
 }
 
-- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView
-                  willDecelerate:(BOOL)decelerate
-{
+- (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate {
     if (!decelerate) {
         [self stoppedScrolling];
     }
 }
 
-- (void)stoppedScrolling
-{
+- (void)stoppedScrolling {
     CGRect frame = self.navigationController.navigationBar.frame;
     if (frame.origin.y < SEARCH_NAVBAR_HEIGHT) {
         [self animateNavBarTo:-(frame.size.height - (SEARCH_NAVBAR_HEIGHT+1))];
@@ -189,6 +162,14 @@ static const CGFloat SEARCH_NAVBAR_HEIGHT = 20;
         [self.navigationController.navigationBar setFrame:frame];
         [self updateBarButtonItems:alpha];
     }];
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
 }
 
 @end

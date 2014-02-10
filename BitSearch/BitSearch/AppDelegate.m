@@ -7,8 +7,118 @@
 //
 
 #import "AppDelegate.h"
+#import "UIDevice+Hardware.h"
+#import "UncaughtExceptionHandler.h"
 
 @implementation AppDelegate
+
+NSString *const ZBAR_READ_SYMBOL_NOTIFICATION = @"ZBarReadSymbolNotification";
+
++(AppDelegate*)instance {
+    return (AppDelegate *)[UIApplication sharedApplication].delegate;
+}
+
+-(void)parseAccountQRCodeData:(NSString*)data {
+    [[NSNotificationCenter defaultCenter] postNotificationName:ZBAR_READ_SYMBOL_NOTIFICATION object:data];
+}
+
+- (void) readerView:(ZBarReaderView*)view didReadSymbols:(ZBarSymbolSet*)syms fromImage:(UIImage*)img {
+    // do something uselful with results
+    for(ZBarSymbol *sym in syms) {
+        [self parseAccountQRCodeData:sym.data];
+        [self.readerView stop];
+        
+        [self closeModal];
+        break;
+    }
+    
+    self.readerView = nil;
+}
+
+-(BOOL)isZBarSupported {
+    NSUInteger platformType = [[UIDevice currentDevice] platformType];
+    
+    if (platformType ==  UIDeviceiPhoneSimulator || platformType ==  UIDeviceiPhoneSimulatoriPhone  || platformType ==  UIDeviceiPhoneSimulatoriPhone || platformType ==  UIDevice1GiPhone || platformType ==  UIDevice3GiPhone || platformType ==  UIDevice1GiPod || platformType ==  UIDevice2GiPod || ![UIImagePickerController isSourceTypeAvailable: UIImagePickerControllerSourceTypeCamera]) {
+        return FALSE;
+    }
+    
+    return TRUE;
+}
+
+-(void)scanAccountQRCode {
+    if ([self isZBarSupported]) {
+        self.readerView = [ZBarReaderView new];
+        [self showModal:self.readerView];
+        self.modalDelegate = self;
+        [self.readerView start];
+        [self.readerView setReaderDelegate:self];
+    } else {
+        //[self showModal:manualView];
+    }
+}
+
+-(void)closeModal {
+    [self.modalView removeFromSuperview];
+    [self.modalContentView removeFromSuperview];
+    
+    CATransition *animation = [CATransition animation];
+    [animation setDuration:0.6f];
+    [animation setType:kCATransitionFade];
+    
+    [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+    
+    [[_window layer] addAnimation:animation forKey:@"HideModal"];
+    
+    if ([self.modalDelegate respondsToSelector:@selector(didDismissModal)])
+        [self.modalDelegate didDismissModal];
+    
+    self.modalContentView = nil;
+    self.modalView = nil;
+    self.modalDelegate = nil;
+}
+
+-(IBAction)closeModalClicked:(id)sender {
+    [self closeModal];
+}
+
+-(IBAction)modalBackgroundClicked:(id)sender {
+    [self.modalView endEditing:FALSE];
+}
+
+-(void)showModal:(UIView*)contentView {
+    @try {
+        if (self.modalView) {
+            [self closeModal];
+        }
+        
+        [[NSBundle mainBundle] loadNibNamed:@"ModalView" owner:self options:nil];
+        [self.modalContentView addSubview:contentView];
+        contentView.frame = CGRectMake(0, 0, self.modalContentView.frame.size.width, self.modalContentView.frame.size.height);
+        
+        [_window addSubview:self.modalView];
+        [_window endEditing:TRUE];
+    } @catch (NSException * e) {
+        [UncaughtExceptionHandler logException:e];
+    }
+    
+    @try {
+        CATransition *animation = [CATransition animation];
+        [animation setDuration:0.6f];
+        [animation setType:kCATransitionFade];
+        
+        [animation setTimingFunction:[CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionLinear]];
+        
+        [[_window layer] addAnimation:animation forKey:@"ShowModal"];
+    } @catch (NSException * e) {
+        NSLog(@"%@", e);
+    }
+}
+
+-(void)didDismissModal {
+    [self.readerView stop];
+    self.readerView = nil;
+}
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {

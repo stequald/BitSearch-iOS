@@ -27,6 +27,16 @@
 		C070C33118A7556200AEBE59 /* libiconv.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C33018A7556200AEBE59 /* libiconv.dylib */; };
 		C070C33318A7557900AEBE59 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C33218A7557900AEBE59 /* CoreMedia.framework */; };
 		C070C34E18A757C200AEBE59 /* libzbar.a in Frameworks */ = {isa = PBXBuildFile; fileRef = C070C34D18A757C200AEBE59 /* libzbar.a */; };
+		C0F7918B18A81398008ECD53 /* ModalView.xib in Resources */ = {isa = PBXBuildFile; fileRef = C0F7918A18A81398008ECD53 /* ModalView.xib */; };
+		C0F7919018A81E1C008ECD53 /* close-container.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7918C18A81E1C008ECD53 /* close-container.png */; };
+		C0F7919118A81E1C008ECD53 /* close-container@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7918D18A81E1C008ECD53 /* close-container@2x.png */; };
+		C0F7919218A81E1C008ECD53 /* modal_background_large.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7918E18A81E1C008ECD53 /* modal_background_large.png */; };
+		C0F7919318A81E1C008ECD53 /* modal_background_large2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7918F18A81E1C008ECD53 /* modal_background_large2x.png */; };
+		C0F7919618A81E41008ECD53 /* 31-circle-x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7919418A81E41008ECD53 /* 31-circle-x.png */; };
+		C0F7919718A81E41008ECD53 /* 31-circle-x@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = C0F7919518A81E41008ECD53 /* 31-circle-x@2x.png */; };
+		C0F7919B18A8A20B008ECD53 /* UIDevice+Hardware.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F7919A18A8A20B008ECD53 /* UIDevice+Hardware.m */; };
+		C0F7919E18A8A28B008ECD53 /* UncaughtExceptionHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F7919D18A8A28B008ECD53 /* UncaughtExceptionHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		C0F791A118A8A2C0008ECD53 /* NSString+URLEncode.m in Sources */ = {isa = PBXBuildFile; fileRef = C0F791A018A8A2C0008ECD53 /* NSString+URLEncode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,6 +96,19 @@
 		C070C34B18A757C200AEBE59 /* ZBarSDK.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSDK.h; sourceTree = "<group>"; };
 		C070C34C18A757C200AEBE59 /* ZBarSymbol.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZBarSymbol.h; sourceTree = "<group>"; };
 		C070C34D18A757C200AEBE59 /* libzbar.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libzbar.a; sourceTree = "<group>"; };
+		C0F7918A18A81398008ECD53 /* ModalView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ModalView.xib; sourceTree = "<group>"; };
+		C0F7918C18A81E1C008ECD53 /* close-container.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-container.png"; sourceTree = "<group>"; };
+		C0F7918D18A81E1C008ECD53 /* close-container@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "close-container@2x.png"; sourceTree = "<group>"; };
+		C0F7918E18A81E1C008ECD53 /* modal_background_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_background_large.png; sourceTree = "<group>"; };
+		C0F7918F18A81E1C008ECD53 /* modal_background_large2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = modal_background_large2x.png; sourceTree = "<group>"; };
+		C0F7919418A81E41008ECD53 /* 31-circle-x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-circle-x.png"; sourceTree = "<group>"; };
+		C0F7919518A81E41008ECD53 /* 31-circle-x@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "31-circle-x@2x.png"; sourceTree = "<group>"; };
+		C0F7919918A8A20B008ECD53 /* UIDevice+Hardware.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+Hardware.h"; sourceTree = "<group>"; };
+		C0F7919A18A8A20B008ECD53 /* UIDevice+Hardware.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+Hardware.m"; sourceTree = "<group>"; };
+		C0F7919C18A8A28B008ECD53 /* UncaughtExceptionHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UncaughtExceptionHandler.h; sourceTree = "<group>"; };
+		C0F7919D18A8A28B008ECD53 /* UncaughtExceptionHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UncaughtExceptionHandler.m; sourceTree = "<group>"; };
+		C0F7919F18A8A2C0008ECD53 /* NSString+URLEncode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+URLEncode.h"; sourceTree = "<group>"; };
+		C0F791A018A8A2C0008ECD53 /* NSString+URLEncode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+URLEncode.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,9 +179,11 @@
 				C03959BD18A7503000AABC4C /* AppDelegate.m */,
 				C03959BF18A7503000AABC4C /* Main_iPhone.storyboard */,
 				C03959C218A7503000AABC4C /* Main_iPad.storyboard */,
+				C0F7918A18A81398008ECD53 /* ModalView.xib */,
 				C03959C518A7503000AABC4C /* ViewController.h */,
 				C03959C618A7503000AABC4C /* ViewController.m */,
 				C03959C818A7503000AABC4C /* Images.xcassets */,
+				C0F7919818A8A20B008ECD53 /* utils */,
 				C062FEA118A7658900A405E4 /* Assets */,
 				C03959B418A7503000AABC4C /* Supporting Files */,
 			);
@@ -205,6 +230,12 @@
 		C062FEA218A7658900A405E4 /* images */ = {
 			isa = PBXGroup;
 			children = (
+				C0F7919418A81E41008ECD53 /* 31-circle-x.png */,
+				C0F7919518A81E41008ECD53 /* 31-circle-x@2x.png */,
+				C0F7918C18A81E1C008ECD53 /* close-container.png */,
+				C0F7918D18A81E1C008ECD53 /* close-container@2x.png */,
+				C0F7918E18A81E1C008ECD53 /* modal_background_large.png */,
+				C0F7918F18A81E1C008ECD53 /* modal_background_large2x.png */,
 				C062FEA718A7670400A405E4 /* qrcode20x20.png */,
 				C062FEA318A7658900A405E4 /* qrcode.png */,
 			);
@@ -269,6 +300,19 @@
 				C070C34118A757C200AEBE59 /* Window.h */,
 			);
 			path = zbar;
+			sourceTree = "<group>";
+		};
+		C0F7919818A8A20B008ECD53 /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				C0F7919F18A8A2C0008ECD53 /* NSString+URLEncode.h */,
+				C0F791A018A8A2C0008ECD53 /* NSString+URLEncode.m */,
+				C0F7919C18A8A28B008ECD53 /* UncaughtExceptionHandler.h */,
+				C0F7919D18A8A28B008ECD53 /* UncaughtExceptionHandler.m */,
+				C0F7919918A8A20B008ECD53 /* UIDevice+Hardware.h */,
+				C0F7919A18A8A20B008ECD53 /* UIDevice+Hardware.m */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -351,10 +395,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03959C418A7503000AABC4C /* Main_iPad.storyboard in Resources */,
+				C0F7919718A81E41008ECD53 /* 31-circle-x@2x.png in Resources */,
 				C03959C918A7503000AABC4C /* Images.xcassets in Resources */,
+				C0F7919618A81E41008ECD53 /* 31-circle-x.png in Resources */,
+				C0F7918B18A81398008ECD53 /* ModalView.xib in Resources */,
 				C062FEA818A7670400A405E4 /* qrcode20x20.png in Resources */,
+				C0F7919318A81E1C008ECD53 /* modal_background_large2x.png in Resources */,
+				C0F7919018A81E1C008ECD53 /* close-container.png in Resources */,
+				C0F7919218A81E1C008ECD53 /* modal_background_large.png in Resources */,
 				C062FEA418A7658900A405E4 /* qrcode.png in Resources */,
 				C03959C118A7503000AABC4C /* Main_iPhone.storyboard in Resources */,
+				C0F7919118A81E1C008ECD53 /* close-container@2x.png in Resources */,
 				C03959B818A7503000AABC4C /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -375,6 +426,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				C03959C718A7503000AABC4C /* ViewController.m in Sources */,
+				C0F791A118A8A2C0008ECD53 /* NSString+URLEncode.m in Sources */,
+				C0F7919E18A8A28B008ECD53 /* UncaughtExceptionHandler.m in Sources */,
+				C0F7919B18A8A20B008ECD53 /* UIDevice+Hardware.m in Sources */,
 				C03959BE18A7503000AABC4C /* AppDelegate.m in Sources */,
 				C03959BA18A7503000AABC4C /* main.m in Sources */,
 			);

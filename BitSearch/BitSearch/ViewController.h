@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "ZBarSDK.h"
 
-@interface ViewController : UIViewController <ZBarReaderDelegate, UIWebViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
+@interface ViewController : UIViewController <UIWebViewDelegate, UITextFieldDelegate, UIScrollViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UIWebView *webView;
 @property (weak, nonatomic) IBOutlet UITextField *searchTextField;

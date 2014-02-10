@@ -7,9 +7,18 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ZBarSDK.h"
 
-@interface AppDelegate : UIResponder <UIApplicationDelegate>
+FOUNDATION_EXPORT NSString *const ZBAR_READ_SYMBOL_NOTIFICATION;
+
+@interface AppDelegate : UIResponder <UIApplicationDelegate, ZBarReaderViewDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property(nonatomic, strong) ZBarReaderView * readerView;
+@property (retain, strong) IBOutlet UIView * modalView;
+@property (retain, strong) IBOutlet UIView * modalContentView;
+@property (retain, strong) id modalDelegate;
 
+-(void)scanAccountQRCode;
++(AppDelegate*)instance;
 @end
